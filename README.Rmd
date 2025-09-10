@@ -45,6 +45,7 @@ tibble::glimpse(gov_sf)
 ### Plot
 
 ```{r}
+#| label: saudimap
 #| message: false
 #| warning: false
 #| dpi: 300
