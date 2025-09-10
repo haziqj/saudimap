@@ -88,6 +88,14 @@ gov_sf <-
 gov_df <- read_csv("R/governorates.csv")
 gov_sf <- left_join(gov_sf, gov_df)
 
+# Convert to tidy version
+list(reg_sf = reg_sf, gov_sf = gov_sf) |>
+  map(function(x) {
+    as_tibble(x) |>
+      st_set_geometry(x$geometry)
+  }) |>
+  list2env(.GlobalEnv)
+
 # Test plot
 ggplot() +
   geom_sf(data = gov_sf, aes(fill = region), alpha = 0.65) +
