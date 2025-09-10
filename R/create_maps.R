@@ -106,5 +106,9 @@ ggplot() +
   scale_fill_viridis_d(option = "mako", guide = "none") +
   theme_void()
 
-# Save datasets
+# Save map data to RData file
 save(reg_sf, gov_sf, gov_df, file = "data/ksamaps.Rdata", compress = "xz")
+
+# Also write to GeoJSON format
+st_write(reg_sf, "data/geojson/ksa_regions.geojson", driver = "GeoJSON")
+st_write(gov_sf, "data/geojson/ksa_governorates.geojson", driver = "GeoJSON")
